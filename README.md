@@ -56,7 +56,7 @@ Cuando una clase hace *validación + persistencia + logging + reglas de negocio*
 
 ```mermaid
 flowchart LR
-  A[InvoiceService (Bad)] --> B[Validación]
+  A[InvoiceService Bad] --> B[Validación]
   A --> C[Persistencia]
   A --> D[Logging]
   A --> E[Reglas de negocio]
