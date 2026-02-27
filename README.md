@@ -182,12 +182,12 @@ Si tu repo usa otra estructura (por ejemplo `SolidBaseExample/SRP/...`), manten�
 
 ## Sugerencias de aprendizaje
 
-- Leé primero el caso **Bad** e intentá identificar el problema.
-- Pasá a **Good** y buscá:
+- Lee primero el caso **Bad** e intenta identificar el problema.
+- Pasa a **Good** y busca:
   - cómo se redujo el acoplamiento,
   - dónde quedaron las responsabilidades,
   - qué cambió en el contrato (interfaces / abstracciones).
-- Tratá de imaginar “el próximo cambio”: ¿agregarías un caso nuevo sin tocar el código existente?
+- Trata de imaginar “el próximo cambio”: ¿agregarías un caso nuevo sin tocar el código existente?
 
 ---
 
