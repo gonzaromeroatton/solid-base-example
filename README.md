@@ -1,36 +1,58 @@
-Este proyecto muestra ejemplos sencillos de cómo aplicar los principios de SOLID en C# mediante ejemplos "buenos" y "malos" que destacan las diferencias entre una mala y una buena implementación.
+# SOLID en .NET (C#) — Solid.DotNET.Howto
 
-## Principios incluidos en el proyecto
+![.NET](https://img.shields.io/badge/.NET-8%2B-512BD4?logo=dotnet&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-Learning-239120?logo=csharp&logoColor=white)
+![SOLID](https://img.shields.io/badge/Principios-SOLID-blue)
+![Status](https://img.shields.io/badge/Status-Educational-success)
 
-### Single Responsibility Principle (SRP)
-El principio de responsabilidad única establece que una clase debe tener una, y solo una, razón para cambiar. Estas responsabilidades deben ser completamente necesarias para describir el propósito de la clase.
+Repositorio educativo con ejemplos **sencillos y directos** para aprender a aplicar los principios **SOLID** en **C#** mediante comparaciones **Bad vs Good** (mala implementación vs refactor recomendado).
 
-- Ejemplo "malo": La clase `InvoiceService` realiza múltiples tareas como validación, persistencia y logging en una sola clase.
-- Ejemplo "bueno": Una solución que incluye las interfaces `IInvoiceRepository` e `ILogger`, delegando responsabilidades específicas.
+---
 
-### Open-Closed Principle (OCP)
-El principio de abierto/cerrado establece que los módulos de software deben estar abiertos a la extensión pero cerrados a la modificación, lo que fomenta la reutilización y reduce el riesgo a errores al cambiar el código existente.
+## Tabla de contenidos
 
-- Ejemplo "malo": La clase `Discounts` calcula distintos tipos de descuentos con un `switch` basado en cadenas de texto.
-- Ejemplo "bueno": La clase `Discounts` implementa una interfaz común `IDiscount`, permitiendo agregar nuevos tipos de descuentos sin modificar la lógica ya existente.
+- [¿Qué vas a encontrar?](#qué-vas-a-encontrar)
+- [Principios SOLID incluidos](#principios-solid-incluidos)
+  - [SRP — Single Responsibility Principle](#srp--single-responsibility-principle)
+  - [OCP — Open-Closed Principle](#ocp--open-closed-principle)
+  - [LSP — Liskov Substitution Principle](#lsp--liskov-substitution-principle)
+- [Estructura del repositorio](#estructura-del-repositorio)
+- [Cómo ejecutar / explorar los ejemplos](#cómo-ejecutar--explorar-los-ejemplos)
+- [Sugerencias de aprendizaje](#sugerencias-de-aprendizaje)
+- [Licencia](#licencia)
 
-### Liskov Substitution Principle (LSP)
-El principio de sustitución de Liskov indica que los objetos deben ser reemplazables por instancias de sus subtipos sin alterar el comportamiento esperado del programa.
+---
 
-- Ejemplo "malo": La clase `Ostrich` (avestruz) hereda de `Bird` pero lanza una excepción al intentar volar, violando el principio.
-- Ejemplo "bueno": Se definen interfaces específicas como `IFlyingBird` para cumplir adecuadamente este principio.
+## Qué vas a encontrar
 
-## Ejemplo de estructura
+✅ Ejemplos cortos y enfocados  
+✅ Comparación **Bad** (anti-pattern típico) vs **Good** (solución con mejor diseño)  
+✅ Código pensado para **leer y discutir**, no para “frameworkizar”  
+✅ Estructura por principio para navegar rápido
 
-```
-Solid.DotNET.Howto
-├── 1.SRP
-│   ├── Bad
-│   │   └── InvoiceService.cs
-│   ├── Good
-│       ├── Interface
-│       │   └── ...
+> [!TIP]
+> Si estás aprendiendo, te conviene abrir 2 archivos a la vez: `Bad/...` y `Good/...` para comparar línea por línea.
 
-├── 2.OCP...
+---
 
-```
+## Principios SOLID incluidos
+
+### SRP — Single Responsibility Principle
+
+**Idea:** una clase debe tener **una sola razón para cambiar**.  
+Cuando una clase hace *validación + persistencia + logging + reglas de negocio*, se vuelve frágil, difícil de testear y costosa de modificar.
+
+#### Anti-patrón común (Bad)
+- Un `InvoiceService` que:
+  - valida
+  - guarda
+  - loguea
+  - decide reglas
+  - y además “coordina” todo
+
+```mermaid
+flowchart LR
+  A[InvoiceService (Bad)] --> B[Validación]
+  A --> C[Persistencia]
+  A -->
+
